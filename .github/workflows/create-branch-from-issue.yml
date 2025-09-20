@@ -20,7 +20,7 @@ jobs:
         id: create_branch
         run: |
           ISSUE_NUMBER=${{ github.event.issue.number }}
-          ISSUE_TITLE=${{ github.event.issue.title }}
+          ISSUE_TITLE=$(echo "${{ github.event.issue.title }}" | sed 's/[-_]/ /g')
           BRANCH_NAME="issue-${ISSUE_NUMBER}-$(echo "$ISSUE_TITLE" | tr ' ' '-' | tr -cd '[:alnum:]-' | tr '[:upper:]' '[:lower:]')"
 
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
