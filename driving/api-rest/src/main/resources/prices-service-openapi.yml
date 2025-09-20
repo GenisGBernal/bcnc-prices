@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Prices API
+  version: 1.0.0
+  description: |
+
+  contact:
+    email: genisgutierrezbernal@gmail.com
+
+servers:
+  - url: http://localhost:8080
+    description: Local test server
+
+tags:
+
+
+security:
+
+paths:
+
+components:
+  parameters:
+
+  schemas:
+
+  securitySchemes:
