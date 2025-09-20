@@ -37,16 +37,3 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: "🔀 A branch '${{ env.BRANCH_NAME }}' has been created for this issue."
-
-      - name: Create draft pull request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH_NAME }}
-          base: main
-          title: "Fixes #${{ github.event.issue.number }} - ${{ github.event.issue.title }}"
-          body: |
-            This PR addresses issue #${{ github.event.issue.number }}.
-
-            Fixes #${{ github.event.issue.number }}
-          draft: true

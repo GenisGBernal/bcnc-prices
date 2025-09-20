@@ -3,7 +3,7 @@ info:
   title: Prices API
   version: 1.0.0
   description: |
-
+    API to query the price applicable for a product of a brand at a specific date and time.
   contact:
     email: genisgutierrezbernal@gmail.com
 
@@ -12,15 +12,93 @@ servers:
     description: Local test server
 
 tags:
-
-
-security:
+  - name: Prices
+    description: Operations related to product prices
 
 paths:
+  /prices/active:
+    get:
+      tags:
+        - Prices
+      summary: Get pricing information for a product
+      description: Returns the applicable price for a product in a brand within a specific date range.
+      parameters:
+        - $ref: '#/components/parameters/DateQueryParam'
+        - $ref: '#/components/parameters/ProductIdQueryParam'
+        - $ref: '#/components/parameters/BrandIdQueryParam'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivePriceDTO'
+        '400':
+          description: Invalid input parameters
+        '404':
+          description: No applicable price found
 
 components:
   parameters:
+    DateQueryParam:
+      in: query
+      name: date
+      required: true
+      schema:
+        type: string
+        pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$'
+        example: "2020-06-14T10:00:00"
+      description: |
+        Date and time for price applicability in local format (no timezone, pattern: yyyy-MM-dd'T'HH:mm:ss)
+
+    ProductIdQueryParam:
+      in: query
+      name: productId
+      required: true
+      schema:
+        type: integer
+        example: 35455
+      description: Identifier of the product.
+
+    BrandIdQueryParam:
+      in: query
+      name: brandId
+      required: true
+      schema:
+        type: integer
+        example: 1
+      description: Identifier of the brand (e.g., 1 for ZARA).
 
   schemas:
+    ActivePriceDTO:
+      type: object
+      properties:
+        productId:
+          type: integer
+          example: 35455
+        brandId:
+          type: integer
+          example: 1
+        priceList:
+          type: integer
+          description: Identifier of the price rate applied
+          example: 2
+        startDate:
+          type: string
+          description: Start date and time in local format (no timezone)
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$'
+          example: "2020-06-14T15:00:00"
+        endDate:
+          type: string
+          description: End date and time in local format (no timezone)
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$'
+          example: "2020-06-14T18:30:00"
+        price:
+          type: number
+          format: float
+          example: 25.45
+        curr:
+          type: string
+          example: EUR
 
-  securitySchemes:
+  securitySchemes: {}
