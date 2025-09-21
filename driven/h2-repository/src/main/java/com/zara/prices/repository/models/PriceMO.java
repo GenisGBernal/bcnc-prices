@@ -67,9 +67,6 @@ public class PriceMO implements ModelEntity<UUID> {
     @Column(name = "END_DATE", nullable = false)
     private LocalDateTime endDate;
 
-    @Column(name = "PRICE_LIST", nullable = false)
-    private Integer priceList;
-
     @ToString.Exclude
     @ManyToOne(
         fetch = FetchType.LAZY,
