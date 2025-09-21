@@ -75,8 +75,13 @@ public class PriceMO implements ModelEntity<UUID> {
     @JoinColumn(name = "PRICE_LIST_ID", referencedColumnName = "ID")
     private PriceListMO priceListMO;
 
-    @Column(name = "PRODUCT_ID", nullable = false)
-    private Long productId;
+    @ToString.Exclude
+    @ManyToOne(
+        fetch = FetchType.LAZY,
+        cascade = {},
+        optional = false)
+    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")
+    private ProductMO productMO;
 
     @Column(name = "PRIORITY", nullable = false)
     private Integer priority;

@@ -27,18 +27,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Table(name = "TBL_PRICE_LISTS")
-public class PriceListMO implements ModelEntity<Long> {
+@Table(name = "TBL_PRODUCTS")
+public class ProductMO implements ModelEntity<Long> {
 
     @Serial
-    private static final long serialVersionUID = 5321869081032465360L;
+    private static final long serialVersionUID = -8321869081032453460L;
 
     @Id
     @Column(name = "ID", nullable = false)
     private Long id;
-
-    @Column(name = "NAME", nullable = false)
-    private String name;
 
     @ToString.Exclude
     @Builder.Default
@@ -46,16 +43,17 @@ public class PriceListMO implements ModelEntity<Long> {
         fetch = FetchType.LAZY,
         orphanRemoval = false,
         cascade = {},
-        mappedBy = "priceListMO")
+        mappedBy = "productMO")
     private List<PriceMO> pricesMO = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
-        return EntityUtils.equals(this, o, PriceListMO::getId);
+        return EntityUtils.equals(this, o, ProductMO::getId);
     }
 
     @Override
     public int hashCode() {
         return EntityUtils.hashCode(this);
     }
+
 }

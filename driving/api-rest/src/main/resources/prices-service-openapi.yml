@@ -20,6 +20,7 @@ paths:
     get:
       tags:
         - Prices
+      operationId: getActivePrice
       summary: Get pricing information for a product
       description: Returns the applicable price for a product in a brand within a specific date range.
       parameters:
@@ -57,6 +58,7 @@ components:
       required: true
       schema:
         type: integer
+        format: int64
         example: 35455
       description: Identifier of the product.
 
@@ -66,6 +68,7 @@ components:
       required: true
       schema:
         type: integer
+        format: int64
         example: 1
       description: Identifier of the brand (e.g., 1 for ZARA).
 
@@ -75,12 +78,15 @@ components:
       properties:
         productId:
           type: integer
+          format: int64
           example: 35455
         brandId:
           type: integer
+          format: int64
           example: 1
-        priceList:
+        priceListId:
           type: integer
+          format: int64
           description: Identifier of the price rate applied
           example: 2
         startDate:
@@ -97,7 +103,7 @@ components:
           type: number
           format: float
           example: 25.45
-        curr:
+        currency:
           type: string
           example: EUR
 
