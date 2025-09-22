@@ -1,4 +1,4 @@
-package com.zara.prices.controller.configs;
+package com.zara.prices.controller.handlers;
 
 import com.zara.prices.application.exceptions.BadRequestException;
 import com.zara.prices.application.exceptions.NotFoundException;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @Slf4j
 @ControllerAdvice
-public class ExceptionHandlerConfig extends ResponseEntityExceptionHandler {
+public class ExceptionHandlers extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = NotFoundException.class)
     public ResponseEntity<Object> handleConflictException(NotFoundException e) {

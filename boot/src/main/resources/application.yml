@@ -27,7 +27,7 @@ spring:
     open-in-view: false
     database-platform: org.hibernate.dialect.H2Dialect
   flyway:
-    locations: classpath:sql/migration
+    locations: classpath:sql/migration/versions
     enabled: true
 
 management:
