@@ -1,4 +1,11 @@
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
 package com.bcnc.prices.repository.mappers;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import com.bcnc.prices.api.rest.dto.ActivePriceDTO;
 import com.bcnc.prices.controller.mappers.DateTimeControllerMapper;
@@ -13,38 +20,31 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-
 @ExtendWith(MockitoExtension.class)
-
 public class PriceControllerMapperTest {
 
-    @Spy
-    @InjectMocks
-    private PriceControllerMapper mapper = Mappers.getMapper(PriceControllerMapper.class);
-    @Mock
-    private DateTimeControllerMapper stringControllerMapper;
+  @Spy @InjectMocks
+  private PriceControllerMapper mapper = Mappers.getMapper(PriceControllerMapper.class);
 
-    @Test
-    void toResponse_shouldReturnActivePriceDTO_whenInputValidActivePrice() {
-        ActivePrice base = Instancio.create(ActivePrice.class);
+  @Mock private DateTimeControllerMapper stringControllerMapper;
 
-        String expectedStartDate = "2025-10-10T10:10:10";
-        when(stringControllerMapper.toResponse(base.startDate()))
-            .thenReturn(expectedStartDate);
+  @Test
+  void toResponse_shouldReturnActivePriceDTO_whenInputValidActivePrice() {
+    ActivePrice base = Instancio.create(ActivePrice.class);
 
-        String expectedEndDate = "2025-13-13T13:13:14";
-        when(stringControllerMapper.toResponse(base.endDate()))
-            .thenReturn(expectedEndDate);
+    String expectedStartDate = "2025-10-10T10:10:10";
+    when(stringControllerMapper.toResponse(base.startDate())).thenReturn(expectedStartDate);
 
-        ActivePriceDTO result = mapper.toResponse(base);
+    String expectedEndDate = "2025-13-13T13:13:14";
+    when(stringControllerMapper.toResponse(base.endDate())).thenReturn(expectedEndDate);
 
-        assertEquals(base.brandId(), result.getBrandId());
-        assertEquals(expectedStartDate, result.getStartDate());
-        assertEquals(expectedEndDate, result.getEndDate());
-        assertEquals(base.priceListId(), result.getPriceListId());
-        assertEquals(base.productId(), result.getProductId());
-        assertEquals(base.currency(), result.getCurrency());
-    }
+    ActivePriceDTO result = mapper.toResponse(base);
+
+    assertEquals(base.brandId(), result.getBrandId());
+    assertEquals(expectedStartDate, result.getStartDate());
+    assertEquals(expectedEndDate, result.getEndDate());
+    assertEquals(base.priceListId(), result.getPriceListId());
+    assertEquals(base.productId(), result.getProductId());
+    assertEquals(base.currency(), result.getCurrency());
+  }
 }

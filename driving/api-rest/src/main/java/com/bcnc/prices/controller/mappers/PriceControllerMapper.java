@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
 package com.bcnc.prices.controller.mappers;
 
 import com.bcnc.prices.api.rest.dto.ActivePriceDTO;
@@ -6,12 +10,8 @@ import org.mapstruct.Mapper;
 
 @Mapper(
     componentModel = "spring",
-    uses = {
-        DateTimeControllerMapper.class
-    }
-)
+    uses = {DateTimeControllerMapper.class})
 public interface PriceControllerMapper {
 
-    ActivePriceDTO toResponse(ActivePrice activePrice);
-
+  ActivePriceDTO toResponse(ActivePrice activePrice);
 }

@@ -1,13 +1,16 @@
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
 package com.bcnc.prices.repository.models.base;
 
 import java.io.Serializable;
 
 public interface ModelEntity<ID> extends Serializable {
 
-    ID getId();
+  ID getId();
 
-    boolean equals(Object o);
+  boolean equals(Object o);
 
-    int hashCode();
-
+  int hashCode();
 }

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
 package com.bcnc.prices.controller.handlers;
 
 import com.bcnc.prices.application.exceptions.BadRequestException;
@@ -13,15 +17,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ExceptionHandlers extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = NotFoundException.class)
-    public ResponseEntity<Object> handleConflictException(NotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
+  @ExceptionHandler(value = NotFoundException.class)
+  public ResponseEntity<Object> handleConflictException(NotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+  }
 
-    @ExceptionHandler(value = BadRequestException.class)
-    public ResponseEntity<Object> handleConflictException(BadRequestException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
-
+  @ExceptionHandler(value = BadRequestException.class)
+  public ResponseEntity<Object> handleConflictException(BadRequestException e) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+  }
 }
-
