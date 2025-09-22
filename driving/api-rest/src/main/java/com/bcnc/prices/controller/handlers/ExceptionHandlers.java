@@ -34,8 +34,6 @@ public class ExceptionHandlers extends ResponseEntityExceptionHandler {
   }
 
   private static ResponseEntity<Object> getBadRequestResponse(String ex) {
-    return ResponseEntity
-      .status(HttpStatus.BAD_REQUEST)
-      .body(ex);
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex);
   }
 }

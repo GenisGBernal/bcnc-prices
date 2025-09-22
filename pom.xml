@@ -37,6 +37,7 @@
         <micrometer.version>1.10.2</micrometer.version>
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
         <spotless-plugin.version>2.41.0</spotless-plugin.version>
+        <caffeine.version>3.2.2</caffeine.version>
     </properties>
 
     <dependencyManagement>
@@ -121,6 +122,11 @@
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash-logback-encoder.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
