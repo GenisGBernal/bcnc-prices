@@ -1,0 +1,5 @@
+spring:
+  application.name: price-service-local
+
+  flyway:
+    locations: classpath:sql/migration/versions,classpath:sql/migration/develop

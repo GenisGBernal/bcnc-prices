@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "54766b29-9a96-4c03-916c-efd6f5459e5f",
+		"name": "bcnc-prices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19801643"
+	},
+	"item": [
+		{
+			"name": "actuator",
+			"item": []
+		},
+		{
+			"name": "prices",
+			"item": [
+				{
+					"name": "active",
+					"item": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "bcnc-url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
