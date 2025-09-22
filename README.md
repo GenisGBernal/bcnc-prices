@@ -18,8 +18,8 @@ Este proyecto sigue los principios de **Arquitectura Hexagonal** (Ports and Adap
 prices/
 ├── boot/ # Módulo de arranque y configuración
 ├── application/ # Lógica central de la aplicación y dominio (DDD)
-├── driving/ # Adaptadores que activan nuestra lógica (Controllers, Consumers)
-├── driven/ # Adaptadores que se activan desde nuestra lógica (Repositories, External APIs)
+├── driving/ # Adaptadores que activan lógica de aplicación (Controllers)
+├── driven/ # Adaptadores que se activan desde la lógica de aplicación (Repositories)
 └── pom.xml # POM principal
 ```
 
