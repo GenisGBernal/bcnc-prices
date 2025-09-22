@@ -27,7 +27,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Table(name = "TBL_PRICE_LIST")
+@Table(name = "TBL_PRICE_LISTS")
 public class PriceListMO implements ModelEntity<Long> {
 
     @Serial

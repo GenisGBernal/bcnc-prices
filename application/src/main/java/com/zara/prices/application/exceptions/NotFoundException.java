@@ -1,7 +1,7 @@
 package com.zara.prices.application.exceptions;
 
 public class NotFoundException extends BusinessException {
-    public NotFoundException(String message) {
-        super(message);
+    public NotFoundException() {
+        super();
     }
 }
