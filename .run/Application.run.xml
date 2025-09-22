@@ -7,7 +7,7 @@
     <module name="prices-boot" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.zara.prices.*" />
+        <option name="PATTERN" value="com.zara.prices.services.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
