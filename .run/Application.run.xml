@@ -3,11 +3,11 @@
     <envs>
       <env name="SPRING_PROFILES_ACTIVE" value="local" />
     </envs>
-    <option name="MAIN_CLASS_NAME" value="com.zara.prices.Application" />
+    <option name="MAIN_CLASS_NAME" value="com.bcnc.prices.Application" />
     <module name="prices-boot" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.zara.prices.services.*" />
+        <option name="PATTERN" value="com.bcnc.prices.services.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

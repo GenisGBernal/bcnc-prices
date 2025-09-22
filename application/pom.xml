@@ -2,7 +2,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.zara.prices</groupId>
+        <groupId>com.bcnc.prices</groupId>
         <artifactId>prices</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
