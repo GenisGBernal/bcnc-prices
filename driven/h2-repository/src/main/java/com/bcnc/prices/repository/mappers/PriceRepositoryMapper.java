@@ -6,11 +6,11 @@ package com.bcnc.prices.repository.mappers;
 
 import com.bcnc.prices.domain.filters.active_price.ActivePriceSortFieldEnum;
 import com.bcnc.prices.domain.models.values.ActivePrice;
-import com.bcnc.prices.repository.filters.fields.BrandFields;
-import com.bcnc.prices.repository.filters.fields.PriceFields;
-import com.bcnc.prices.repository.filters.fields.PriceListFields;
-import com.bcnc.prices.repository.filters.fields.ProductFields;
 import com.bcnc.prices.repository.models.PriceMO;
+import com.bcnc.prices.repository.models.fields.BrandFields;
+import com.bcnc.prices.repository.models.fields.PriceFields;
+import com.bcnc.prices.repository.models.fields.PriceListFields;
+import com.bcnc.prices.repository.models.fields.ProductFields;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

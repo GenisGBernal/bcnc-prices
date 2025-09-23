@@ -10,7 +10,9 @@ import static org.mockito.Mockito.when;
 
 import com.bcnc.prices.application.services.PriceService;
 import com.bcnc.prices.application.use_cases.PriceUseCase;
+import com.bcnc.prices.domain.filters.PaginationRequest;
 import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceSortFieldEnum;
 import com.bcnc.prices.domain.models.values.ActivePrice;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -19,7 +21,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 @ExtendWith(MockitoExtension.class)
 public class PriceUseCaseTest {
@@ -34,7 +35,7 @@ public class PriceUseCaseTest {
     void shouldReturnActivePrice_whenServiceReturnsValue() {
       // given
       ActivePriceFilter filter = mock(ActivePriceFilter.class);
-      Pageable pageable = mock(Pageable.class);
+      PaginationRequest<ActivePriceSortFieldEnum> pageable = mock(PaginationRequest.class);
 
       Page<ActivePrice> expected = mock(Page.class);
       when(priceService.find(filter, pageable)).thenReturn(expected);

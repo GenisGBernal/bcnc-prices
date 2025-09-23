@@ -4,7 +4,7 @@
  */
 package com.bcnc.prices.repository.repositories.base;
 
-import com.bcnc.prices.repository.models.base.ModelEntity;
+import com.bcnc.prices.repository.models.ModelEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;

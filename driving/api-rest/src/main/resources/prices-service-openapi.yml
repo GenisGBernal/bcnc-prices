@@ -146,7 +146,7 @@ components:
     SortDirENUM:
       type: string
       enum: [ ASC, DESC ]
-      default: asc
+      default: ASC
 
     GetPricesSortFieldENUM:
       type: string

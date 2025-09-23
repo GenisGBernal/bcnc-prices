@@ -4,7 +4,6 @@
  */
 package com.bcnc.prices.repository.models;
 
-import com.bcnc.prices.repository.models.base.ModelEntity;
 import com.bcnc.prices.repository.utils.EntityUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

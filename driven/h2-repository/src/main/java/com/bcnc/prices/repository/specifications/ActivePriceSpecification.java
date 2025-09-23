@@ -2,13 +2,13 @@
  * Copyright (c) 2025 BCNC.
  * All rights reserved.
  */
-package com.bcnc.prices.repository.filters;
+package com.bcnc.prices.repository.specifications;
 
 import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
-import com.bcnc.prices.repository.filters.fields.BrandFields;
-import com.bcnc.prices.repository.filters.fields.PriceFields;
-import com.bcnc.prices.repository.filters.fields.ProductFields;
 import com.bcnc.prices.repository.models.PriceMO;
+import com.bcnc.prices.repository.models.fields.BrandFields;
+import com.bcnc.prices.repository.models.fields.PriceFields;
+import com.bcnc.prices.repository.models.fields.ProductFields;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

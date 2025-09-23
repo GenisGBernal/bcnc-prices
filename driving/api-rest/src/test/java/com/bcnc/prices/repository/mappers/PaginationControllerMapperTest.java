@@ -7,8 +7,11 @@ package com.bcnc.prices.repository.mappers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.bcnc.prices.api.rest.dto.PagePaginationDTO;
+import com.bcnc.prices.api.rest.dto.SortDirENUM;
 import com.bcnc.prices.controller.configs.PaginationConfig;
 import com.bcnc.prices.controller.mappers.PaginationControllerMapper;
+import com.bcnc.prices.domain.filters.PaginationRequest;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceSortFieldEnum;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -20,7 +23,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 
 @ExtendWith(MockitoExtension.class)
 class PaginationControllerMapperTest {
@@ -32,14 +34,18 @@ class PaginationControllerMapperTest {
     // given
     Integer page = 2;
     Integer pageSize = 49;
-    String sortedField = "creationDate";
-    Sort sortDirENUM = Sort.by(Direction.ASC, sortedField);
+    SortDirENUM sortDirENUM = SortDirENUM.ASC;
+    Sort.Direction sortDir = Sort.Direction.valueOf(sortDirENUM.getValue());
+    ActivePriceSortFieldEnum sortField = ActivePriceSortFieldEnum.PRICE;
 
     // when
-    PageRequest result = mapper.toRequest(page, pageSize, sortDir, sortOrder);
+    PaginationRequest<ActivePriceSortFieldEnum> result =
+        mapper.toRequest(page, pageSize, sortDirENUM, sortField);
     // then
-    assertEquals(page - PaginationConfig.PAGE_OFFSET, result.getPageNumber());
-    assertEquals(pageSize, result.getPageSize());
+    assertEquals(page - PaginationConfig.PAGE_OFFSET, result.pageNumber());
+    assertEquals(pageSize, result.pageSize());
+    assertEquals(sortDir, result.sortDir());
+    assertEquals(sortField, result.sortField());
   }
 
   @Test
