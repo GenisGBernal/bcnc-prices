@@ -18,6 +18,7 @@ import com.bcnc.prices.domain.models.values.ActivePrice;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,12 +33,12 @@ public class PriceControllerAdapter implements PricesApi {
   private final PaginationControllerMapper paginationControllerMapper;
 
   @Override
-  public ResponseEntity<PricePaginatedDTO> getPrices(String date, Long productId, Long brandId, Integer page, Integer pageSize) {
+  public ResponseEntity<PricePaginatedDTO> getPrices(String date, Long productId, Long brandId, String acceptLanguage, Integer page, Integer pageSize) {
     if (!ValidatorUtils.validateString(date)) throw new BadRequestException(MessageKeys.EXCEPTION_GET_PRICES_BAD_REQUEST_DATE);
 
     LocalDateTime dateReq = dateTimeControllerMapper.toDomain(date);
     ActivePriceFilter filter = new ActivePriceFilter(dateReq, productId, brandId);
-    Pageable pageable = paginationControllerMapper.toRequest(page, pageSize);
+    PageRequest pageable = paginationControllerMapper.toRequest(page, pageSize);
 
     Page<ActivePrice> activePrices = useCasePort.find(filter, pageable);
 

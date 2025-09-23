@@ -5,25 +5,37 @@
 package com.bcnc.prices.repository.adapters;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.bcnc.prices.domain.filters.ActivePriceFilter;
 import com.bcnc.prices.domain.models.values.ActivePrice;
+import com.bcnc.prices.repository.mappers.PriceRepositoryMapper;
+import com.bcnc.prices.repository.models.PriceMO;
 import com.bcnc.prices.repository.repositories.PriceRepository;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+
+import com.bcnc.prices.repository.specifications.ActivePriceSpecification;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @ExtendWith(MockitoExtension.class)
 public class PriceRepositoryAdapterTest {
 
   @InjectMocks private PriceRepositoryAdapter adapter;
   @Mock private PriceRepository priceRepository;
+  @Mock private PriceRepositoryMapper priceRepositoryMapper;
 
   @Nested
   class FindActivePrice {
@@ -31,15 +43,19 @@ public class PriceRepositoryAdapterTest {
     @Test
     void shouldForwardOptional_whenRepositoryReturnsValue() {
       // given
-      LocalDateTime date = LocalDateTime.now();
-      Long productId = 3424L;
-      Long brandId = 3L;
+      ActivePriceFilter filter = mock(ActivePriceFilter.class);
+      Pageable pageable = mock(Pageable.class);
 
-      Optional<ActivePrice> expected = mock(Optional.class);
-      when(priceRepository.findActivePrice(date, productId, brandId)).thenReturn(expected);
+      Page<PriceMO> findAllResult = mock(Page.class);
+      when(priceRepository.findAll(any(ActivePriceSpecification.class), eq(pageable)))
+        .thenReturn(findAllResult);
+
+      Page<ActivePrice> expected = mock(Page.class);
+      when(findAllResult.map(any(Function.class)))
+        .thenReturn(expected);
 
       // when
-      Optional<ActivePrice> result = adapter.findActivePrice(date, productId, brandId);
+      Page<ActivePrice> result = adapter.find(filter, pageable);
 
       // then
       assertEquals(expected, result);

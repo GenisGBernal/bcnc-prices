@@ -11,6 +11,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 @Mapper(
     componentModel = "spring",
     uses = {
@@ -20,6 +22,7 @@ import org.springframework.data.domain.Page;
 public interface PriceControllerMapper {
 
   PriceDTO toResponse(ActivePrice activePrice);
+  List<PriceDTO> toResponseFromActivePrices(List<ActivePrice> activePrice);
 
   @Mapping(target = "pagination", source = ".")
   @Mapping(target = "items", source = "content")
