@@ -10,7 +10,9 @@ import static org.mockito.Mockito.when;
 
 import com.bcnc.prices.application.ports.driven.PriceRepositoryPort;
 import com.bcnc.prices.application.services.PriceService;
+import com.bcnc.prices.domain.filters.ActivePriceFilter;
 import com.bcnc.prices.domain.models.values.ActivePrice;
+
 import java.time.LocalDateTime;
 import java.util.Optional;
 import org.junit.jupiter.api.Nested;
@@ -19,6 +21,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @ExtendWith(MockitoExtension.class)
 public class PriceServiceTest {
@@ -27,20 +31,19 @@ public class PriceServiceTest {
   @Mock private PriceRepositoryPort priceRepositoryPort;
 
   @Nested
-  class FindActivePrice {
+  class FindActivePrices {
 
     @Test
     void shouldForwardOptional_whenRepositoryPortReturnsValue() {
       // given
-      LocalDateTime date = LocalDateTime.now();
-      Long productId = 3424L;
-      Long brandId = 3L;
+      ActivePriceFilter filter = mock(ActivePriceFilter.class);
+      Pageable pageable = mock(Pageable.class);
 
-      Optional<ActivePrice> expected = mock(Optional.class);
-      when(priceRepositoryPort.findActivePrice(date, productId, brandId)).thenReturn(expected);
+      Page<ActivePrice> expected = mock(Page.class);
+      when(priceRepositoryPort.find(filter, pageable)).thenReturn(expected);
 
       // when
-      Optional<ActivePrice> result = service.findActivePrice(date, productId, brandId);
+      Page<ActivePrice> result = service.find(filter, pageable);
 
       // then
       assertEquals(expected, result);

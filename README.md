@@ -2,14 +2,14 @@
 
 ## 📋 Tabla de Contenidos
 - [Estructura General](#estructura-general)
-- [Tecnologías Utilizadas](#tecnologias-utilizadas)
-- [Configuración del Entorno](#configuracion-del-entorno)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Configuración del Entorno](#configuración-del-entorno)
 - [Arquitectura Hexagonal](#arquitectura-hexagonal)
-- [Ejecución del Proyecto](#ejecucion-del-proyecto)
+- [Ejecución del Proyecto](#ejecución-del-proyecto)
 - [Pruebas](#pruebas)
-- [Índices](#indices)
-- [Gestión del Proyecto](#gestion-del-proyecto)
-- [Colección Postman](#coleccion-postman)
+- [Índices](#índices)
+- [Gestión del Proyecto](#gestión-del-proyecto)
+- [Colección Postman](#colección-postman)
 - [Swagger / API Contract](#swagger--api-contract)
 
 ## 🏗️ Estructura General
@@ -34,6 +34,7 @@ prices/
 - **Spotless** - Formateo y linting de código
 - **JUnit 5** - Framework de testing
 - **Instancio** - Instanciación de datos de prueba
+- **OpenApiGenerator** - Generación de artefactos REST
 
 ## ⚙️ Configuración del Entorno
 
@@ -89,6 +90,7 @@ export SPRING_PROFILES_ACTIVE=local
 - **Caching Estratégico:** Aplicado para recuperar más rápidamente los precios. Uso de caché compartida recomendado para casos con actualizaciones frecuentes.
 
 #### Separación Estricta
+- Diseño con metodoogía api-first en contrato open-api swagger y generación automática de atributos con openapi-generator
 - Cada módulo tiene dependencias claramente definidas.
 - El dominio no conoce detalles de infraestructura.
 - Facilita testing y mantenibilidad.

@@ -80,6 +80,7 @@
                                 <useSpringBoot3>true</useSpringBoot3>
                                 <useJakartaEe>true</useJakartaEe>
                                 <generateTests>false</generateTests>
+                                <useBuilder>true</useBuilder>
                             </configOptions>
                         </configuration>
                     </execution>
