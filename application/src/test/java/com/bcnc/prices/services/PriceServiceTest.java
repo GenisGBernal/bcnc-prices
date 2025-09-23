@@ -10,11 +10,8 @@ import static org.mockito.Mockito.when;
 
 import com.bcnc.prices.application.ports.driven.PriceRepositoryPort;
 import com.bcnc.prices.application.services.PriceService;
-import com.bcnc.prices.domain.filters.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
 import com.bcnc.prices.domain.models.values.ActivePrice;
-
-import java.time.LocalDateTime;
-import java.util.Optional;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

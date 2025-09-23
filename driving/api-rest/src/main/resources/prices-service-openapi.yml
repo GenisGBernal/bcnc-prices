@@ -30,6 +30,8 @@ paths:
         - $ref: '#/components/parameters/BrandIdQueryParam'
         - $ref: '#/components/parameters/PageQueryParam'
         - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/SortDirQueryParam'
+        - $ref: '#/components/parameters/GetPricesSortFieldQueryParam'
       responses:
         '200':
           description: Successful operation
@@ -64,15 +66,6 @@ paths:
 
 components:
   parameters:
-    AcceptLanguageHeader:
-      name: Accept-Language
-      in: header
-      required: false
-      description: Supported languages for the response (default is en_US).
-      schema:
-        type: string
-        enum: [ en-US, es-ES ]
-        default: en-US
 
     DateQueryParam:
       in: query
@@ -123,7 +116,43 @@ components:
         maximum: 50
       description: The number of items per page to retrieve.
 
+    AcceptLanguageHeader:
+      name: Accept-Language
+      in: header
+      description: Supported languages for the response (default is en_US).
+      schema:
+        $ref: '#/components/schemas/AcceptLanguageENUM'
+
+    SortDirQueryParam:
+      in: query
+      name: sortDir
+      description: Field by which to sort results.
+      schema:
+        $ref: '#/components/schemas/SortDirENUM'
+
+    GetPricesSortFieldQueryParam:
+      in: query
+      name: sortField
+      description: Sort order (ascending or descending).
+      schema:
+        $ref: '#/components/schemas/GetPricesSortFieldENUM'
+
   schemas:
+
+    AcceptLanguageENUM:
+      type: string
+      enum: [ en-US, es-ES ]
+
+    SortDirENUM:
+      type: string
+      enum: [ ASC, DESC ]
+      default: asc
+
+    GetPricesSortFieldENUM:
+      type: string
+      enum: [ PRICE, CURRENCY, BRAND_ID, START_DATE, END_DATE, PRICE_LIST_ID, PRODUCT_ID ]
+      default: PRICE
+
 
     SlicePaginationDTO:
       type: object

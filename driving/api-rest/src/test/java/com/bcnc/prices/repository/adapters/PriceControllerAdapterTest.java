@@ -12,18 +12,15 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.bcnc.prices.api.rest.dto.PricePaginatedDTO;
-import com.bcnc.prices.api.rest.dto.PriceDTO;
 import com.bcnc.prices.application.exceptions.BadRequestException;
 import com.bcnc.prices.application.ports.driving.PriceUseCasePort;
 import com.bcnc.prices.controller.adapters.PriceControllerAdapter;
 import com.bcnc.prices.controller.mappers.DateTimeControllerMapper;
 import com.bcnc.prices.controller.mappers.PaginationControllerMapper;
 import com.bcnc.prices.controller.mappers.PriceControllerMapper;
-import com.bcnc.prices.domain.filters.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
 import com.bcnc.prices.domain.models.values.ActivePrice;
-
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +30,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 @ExtendWith(MockitoExtension.class)
@@ -57,7 +53,8 @@ public class PriceControllerAdapterTest {
       Integer pageSize = 10;
 
       // when
-      Executable executable = () -> adapter.getPrices(date, productId, brandId, "es", page, pageSize);
+      Executable executable =
+          () -> adapter.getPrices(date, productId, brandId, "es", page, pageSize);
 
       // then
       assertThrows(BadRequestException.class, executable);
@@ -76,7 +73,7 @@ public class PriceControllerAdapterTest {
       when(dateTimeControllerMapper.toDomain(date)).thenReturn(localDateTime);
 
       PageRequest pageable = mock(PageRequest.class);
-      when(paginationControllerMapper.toRequest(page, pageSize))
+      when(paginationControllerMapper.toRequest(page, pageSize, sortDir, sortOrder))
           .thenReturn(pageable);
 
       Page<ActivePrice> activePrice = mock(Page.class);
@@ -84,10 +81,12 @@ public class PriceControllerAdapterTest {
           .thenReturn(activePrice);
 
       PricePaginatedDTO expectedResponse = mock(PricePaginatedDTO.class);
-      when(priceControllerMapper.toPricePaginatedResponse(activePrice)).thenReturn(expectedResponse);
+      when(priceControllerMapper.toPricePaginatedResponse(activePrice))
+          .thenReturn(expectedResponse);
 
       // when
-      ResponseEntity<PricePaginatedDTO> result = adapter.getPrices(date, productId, brandId, "es", page, pageSize);
+      ResponseEntity<PricePaginatedDTO> result =
+          adapter.getPrices(date, productId, brandId, "es", page, pageSize);
 
       // then
       assertEquals(expectedResponse, result.getBody());

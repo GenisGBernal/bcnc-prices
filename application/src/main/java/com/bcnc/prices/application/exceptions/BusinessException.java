@@ -4,11 +4,10 @@
  */
 package com.bcnc.prices.application.exceptions;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.i18n.LocaleContextHolder;
-
 import java.util.Locale;
 import java.util.ResourceBundle;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 @Slf4j
 public class BusinessException extends RuntimeException {

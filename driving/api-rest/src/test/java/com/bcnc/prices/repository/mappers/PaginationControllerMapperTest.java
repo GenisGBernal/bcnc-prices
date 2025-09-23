@@ -1,8 +1,16 @@
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
 package com.bcnc.prices.repository.mappers;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.bcnc.prices.api.rest.dto.PagePaginationDTO;
 import com.bcnc.prices.controller.configs.PaginationConfig;
 import com.bcnc.prices.controller.mappers.PaginationControllerMapper;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -13,11 +21,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-
-import java.util.Collections;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class PaginationControllerMapperTest {
@@ -33,11 +36,10 @@ class PaginationControllerMapperTest {
     Sort sortDirENUM = Sort.by(Direction.ASC, sortedField);
 
     // when
-    PageRequest result = mapper.toRequest(page, pageSize);
+    PageRequest result = mapper.toRequest(page, pageSize, sortDir, sortOrder);
     // then
     assertEquals(page - PaginationConfig.PAGE_OFFSET, result.getPageNumber());
     assertEquals(pageSize, result.getPageSize());
-
   }
 
   @Test
@@ -57,6 +59,4 @@ class PaginationControllerMapperTest {
     assertEquals(20, result.getTotalItems());
     assertEquals(1L, result.getTotalPages());
   }
-
-
 }

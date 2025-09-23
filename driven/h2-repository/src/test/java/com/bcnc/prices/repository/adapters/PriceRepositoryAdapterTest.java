@@ -10,17 +10,13 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.bcnc.prices.domain.filters.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
 import com.bcnc.prices.domain.models.values.ActivePrice;
+import com.bcnc.prices.repository.filters.ActivePriceSpecification;
 import com.bcnc.prices.repository.mappers.PriceRepositoryMapper;
 import com.bcnc.prices.repository.models.PriceMO;
 import com.bcnc.prices.repository.repositories.PriceRepository;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
-
-import com.bcnc.prices.repository.specifications.ActivePriceSpecification;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -48,11 +44,10 @@ public class PriceRepositoryAdapterTest {
 
       Page<PriceMO> findAllResult = mock(Page.class);
       when(priceRepository.findAll(any(ActivePriceSpecification.class), eq(pageable)))
-        .thenReturn(findAllResult);
+          .thenReturn(findAllResult);
 
       Page<ActivePrice> expected = mock(Page.class);
-      when(findAllResult.map(any(Function.class)))
-        .thenReturn(expected);
+      when(findAllResult.map(any(Function.class))).thenReturn(expected);
 
       // when
       Page<ActivePrice> result = adapter.find(filter, pageable);

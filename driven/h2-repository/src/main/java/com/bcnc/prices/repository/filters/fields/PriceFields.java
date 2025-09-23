@@ -1,4 +1,8 @@
-package com.bcnc.prices.repository.specifications.fields;
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
+package com.bcnc.prices.repository.filters.fields;
 
 import lombok.experimental.UtilityClass;
 
@@ -14,5 +18,4 @@ public class PriceFields {
   public final String PRIORITY = "priority";
   public final String PRICE = "price";
   public final String CURRENCY = "currency";
-
 }
