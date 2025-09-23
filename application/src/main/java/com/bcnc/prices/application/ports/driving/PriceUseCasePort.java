@@ -4,14 +4,14 @@
  */
 package com.bcnc.prices.application.ports.driving;
 
-import com.bcnc.prices.application.config.impl.FindActivePriceCache;
-import com.bcnc.prices.domain.filters.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.PaginationRequest;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceSortFieldEnum;
 import com.bcnc.prices.domain.models.values.ActivePrice;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 public interface PriceUseCasePort {
 
-  Page<ActivePrice> find(ActivePriceFilter filter, Pageable pageable);
+  Page<ActivePrice> find(
+      ActivePriceFilter filter, PaginationRequest<ActivePriceSortFieldEnum> pageable);
 }

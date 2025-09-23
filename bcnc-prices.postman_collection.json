@@ -8,14 +8,443 @@
 	"item": [
 		{
 			"name": "actuator",
-			"item": []
+			"item": [
+				{
+					"name": "prometheus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bcnc-url}}/actuator/prometheus",
+							"host": [
+								"{{bcnc-url}}"
+							],
+							"path": [
+								"actuator",
+								"prometheus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bcnc-url}}/actuator/health",
+							"host": [
+								"{{bcnc-url}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bcnc-url}}/actuator/metrics",
+							"host": [
+								"{{bcnc-url}}"
+							],
+							"path": [
+								"actuator",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bcnc-url}}/actuator/info",
+							"host": [
+								"{{bcnc-url}}"
+							],
+							"path": [
+								"actuator",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "prices",
 			"item": [
 				{
-					"name": "active",
-					"item": []
+					"name": "getPrices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "es-ME",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{bcnc-url}}/prices?date=2020-06-14T10:00:00&productId=35455&brandId=1&sortDir=DESC&sortField=PRICE&pageSize=1&page=2",
+							"host": [
+								"{{bcnc-url}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2020-06-14T10:00:00"
+								},
+								{
+									"key": "productId",
+									"value": "35455"
+								},
+								{
+									"key": "brandId",
+									"value": "1"
+								},
+								{
+									"key": "sortDir",
+									"value": "DESC"
+								},
+								{
+									"key": "sortField",
+									"value": "PRICE"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ejemplo1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "es-ME",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{bcnc-url}}/prices?date=2020-06-14T10:00:00&productId=35455&brandId=1",
+									"host": [
+										"{{bcnc-url}}"
+									],
+									"path": [
+										"prices"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2020-06-14T10:00:00"
+										},
+										{
+											"key": "productId",
+											"value": "35455"
+										},
+										{
+											"key": "brandId",
+											"value": "1"
+										},
+										{
+											"key": "sortDir",
+											"value": "DESC",
+											"disabled": true
+										},
+										{
+											"key": "sortField",
+											"value": "PRICE",
+											"disabled": true
+										},
+										{
+											"key": "pageSize",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Ejemplo2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "es-ME",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{bcnc-url}}/prices?date=2020-06-14T16:00:00&productId=35455&brandId=1",
+									"host": [
+										"{{bcnc-url}}"
+									],
+									"path": [
+										"prices"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2020-06-14T16:00:00"
+										},
+										{
+											"key": "productId",
+											"value": "35455"
+										},
+										{
+											"key": "brandId",
+											"value": "1"
+										},
+										{
+											"key": "sortDir",
+											"value": "DESC",
+											"disabled": true
+										},
+										{
+											"key": "sortField",
+											"value": "PRICE",
+											"disabled": true
+										},
+										{
+											"key": "pageSize",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Ejemplo3",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "es-ME",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{bcnc-url}}/prices?date=2020-06-14T21:00:00&productId=35455&brandId=1",
+									"host": [
+										"{{bcnc-url}}"
+									],
+									"path": [
+										"prices"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2020-06-14T21:00:00"
+										},
+										{
+											"key": "productId",
+											"value": "35455"
+										},
+										{
+											"key": "brandId",
+											"value": "1"
+										},
+										{
+											"key": "sortDir",
+											"value": "DESC",
+											"disabled": true
+										},
+										{
+											"key": "sortField",
+											"value": "PRICE",
+											"disabled": true
+										},
+										{
+											"key": "pageSize",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Ejemplo4",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "es-ME",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{bcnc-url}}/prices?date=2020-06-15T10:00:00&productId=35455&brandId=1",
+									"host": [
+										"{{bcnc-url}}"
+									],
+									"path": [
+										"prices"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2020-06-15T10:00:00"
+										},
+										{
+											"key": "productId",
+											"value": "35455"
+										},
+										{
+											"key": "brandId",
+											"value": "1"
+										},
+										{
+											"key": "sortDir",
+											"value": "DESC",
+											"disabled": true
+										},
+										{
+											"key": "sortField",
+											"value": "PRICE",
+											"disabled": true
+										},
+										{
+											"key": "pageSize",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Ejemplo5",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "es-ME",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{bcnc-url}}/prices?date=2020-06-16T21:00:00&productId=35455&brandId=1",
+									"host": [
+										"{{bcnc-url}}"
+									],
+									"path": [
+										"prices"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2020-06-16T21:00:00"
+										},
+										{
+											"key": "productId",
+											"value": "35455"
+										},
+										{
+											"key": "brandId",
+											"value": "1"
+										},
+										{
+											"key": "sortDir",
+											"value": "DESC",
+											"disabled": true
+										},
+										{
+											"key": "sortField",
+											"value": "PRICE",
+											"disabled": true
+										},
+										{
+											"key": "pageSize",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
 				}
 			]
 		}

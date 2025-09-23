@@ -1,21 +1,27 @@
+/*
+ * Copyright (c) 2025 BCNC.
+ * All rights reserved.
+ */
 package com.bcnc.prices.controller.mappers;
 
 import com.bcnc.prices.api.rest.dto.PagePaginationDTO;
+import com.bcnc.prices.api.rest.dto.SortDirENUM;
 import com.bcnc.prices.controller.configs.PaginationConfig;
+import com.bcnc.prices.domain.filters.PaginationRequest;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 @Mapper(componentModel = "spring")
 public interface PaginationControllerMapper {
 
-  default PageRequest toRequest(Integer page, Integer pageSize) {
-    return PageRequest.of(
-      page - PaginationConfig.PAGE_OFFSET,
-      pageSize
-    );
+  default <S> PaginationRequest<S> toRequest(
+      Integer page, Integer pageSize, SortDirENUM sortDir, S sortField) {
+    return PaginationRequest.of(
+        page - PaginationConfig.PAGE_OFFSET,
+        pageSize,
+        Sort.Direction.valueOf(sortDir.getValue()),
+        sortField);
   }
 
   default PagePaginationDTO toResponse(Page<?> page) {
