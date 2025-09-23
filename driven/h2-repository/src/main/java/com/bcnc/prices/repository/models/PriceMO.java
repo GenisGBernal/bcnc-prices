@@ -60,12 +60,15 @@ public class PriceMO implements ModelEntity<UUID> {
       optional = false)
   @JoinColumn(name = "BRAND_ID", referencedColumnName = "ID")
   private BrandMO brandMO;
+  public static final String FIELD_BRAND = "brandMO";
 
   @Column(name = "START_DATE", nullable = false)
   private LocalDateTime startDate;
+  public static final String FIELD_START_DATE = "startDate";
 
   @Column(name = "END_DATE", nullable = false)
   private LocalDateTime endDate;
+  public static final String FIELD_END_DATE = "endDate";
 
   @ToString.Exclude
   @ManyToOne(
@@ -82,15 +85,18 @@ public class PriceMO implements ModelEntity<UUID> {
       optional = false)
   @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")
   private ProductMO productMO;
+  public static final String FIELD_PRODUCT = "productMO";
 
   @Column(name = "PRIORITY", nullable = false)
   private Integer priority;
+  public static final String FIELD_PRIORITY = "priority";
 
   @Column(name = "PRICE", nullable = false, columnDefinition = "NUMERIC(15,2)")
   private BigDecimal price;
 
   @Column(name = "CURR", length = 3, nullable = false)
   private String currency;
+  public static final String FIELD_CURRENCY = "currency";
 
   @Override
   public boolean equals(Object o) {

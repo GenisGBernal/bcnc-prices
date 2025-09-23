@@ -32,7 +32,7 @@ public interface PriceRepository extends BaseRepository<PriceMO, UUID> {
           AND p.brandMO.id = :brandId
           AND :date BETWEEN p.startDate AND p.endDate
         ORDER BY p.priority DESC
-        LIMIT 1""")
+        """)
   Optional<ActivePrice> findActivePrice(
       @Param("date") LocalDateTime date,
       @Param("productId") Long productId,
