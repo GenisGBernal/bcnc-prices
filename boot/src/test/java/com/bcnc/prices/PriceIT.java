@@ -83,7 +83,7 @@ public class PriceIT {
       String displayName, String dateTime, String productId, String brandId, String expectedJson) {
     mockMvc
         .perform(
-            MockMvcRequestBuilders.get("/prices/active")
+            MockMvcRequestBuilders.get("/prices")
                 .param("date", dateTime)
                 .param("productId", productId)
                 .param("brandId", brandId))

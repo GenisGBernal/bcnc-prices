@@ -4,12 +4,14 @@
  */
 package com.bcnc.prices.application.ports.driving;
 
-import com.bcnc.prices.application.exceptions.NotFoundException;
+import com.bcnc.prices.domain.filters.PaginationRequest;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceFilter;
+import com.bcnc.prices.domain.filters.active_price.ActivePriceSortFieldEnum;
 import com.bcnc.prices.domain.models.values.ActivePrice;
-import java.time.LocalDateTime;
+import org.springframework.data.domain.Page;
 
 public interface PriceUseCasePort {
 
-  ActivePrice getActivePrice(LocalDateTime date, Long productId, Long brandId)
-      throws NotFoundException;
+  Page<ActivePrice> find(
+      ActivePriceFilter filter, PaginationRequest<ActivePriceSortFieldEnum> pageable);
 }

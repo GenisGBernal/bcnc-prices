@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.bcnc.prices</groupId>
         <artifactId>prices</artifactId>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -41,6 +41,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.instancio</groupId>
+            <artifactId>instancio-core</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -2,7 +2,7 @@
  * Copyright (c) 2025 BCNC.
  * All rights reserved.
  */
-package com.bcnc.prices.repository.models.base;
+package com.bcnc.prices.repository.models;
 
 import java.io.Serializable;
 
