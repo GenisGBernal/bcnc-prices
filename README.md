@@ -3,8 +3,8 @@
 ## 📋 Tabla de Contenidos
 - [Estructura General](#-estructura-general)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
-- [Configuración del Entorno](#-configuración-del-entorno)
 - [Arquitectura Hexagonal](#-arquitectura-hexagonal)
+- [Configuración del Entorno](#-configuración-del-entorno)
 - [Compilación](#compilación)
 - [Ejecución](#ejecución)
 - [Pruebas](#-pruebas)
@@ -36,21 +36,6 @@ prices/
 - **JUnit 5** - Framework de testing
 - **Instancio** - Instanciación de datos de prueba
 - **OpenApiGenerator** - Generación de artefactos REST
-
-## ⚙️ Configuración del Entorno
-
-### 1. Prerrequisitos
-- Java 21 o superior
-- Maven 3.9.x o superior
-- IntelliJ IDEA (recomendado) u otro IDE similar
-
-### 2. Configuración de IntelliJ (Evita Double Processing)
-**Settings → Build, Execution, Deployment → Compiler → Annotation Processors**
-- ✅ Enable: "Enable annotation processing"
-- 🔧 Processor path: "Obtain processors from project classpath"
-
-**Settings → Build, Execution, Deployment → Build Tools → Maven → Runner**
-- ✅ Enable: "Delegate IDE build/run actions to Maven" (previene duplicación en annotation processing)
 
 ### 3. Variables de Entorno
 
@@ -95,6 +80,23 @@ export SPRING_PROFILES_ACTIVE=local
 - Cada módulo tiene dependencias claramente definidas.
 - El dominio no conoce detalles de infraestructura.
 - Facilita testing y mantenibilidad.
+
+## ⚙️ Configuración del Entorno
+
+### 1. Prerrequisitos
+- Java 21 o superior
+- Maven 3.9.x o superior
+- IntelliJ IDEA (recomendado) u otro IDE similar
+
+*IMPORTANT*
+
+### 2. Configuración de IntelliJ (Evita Double Processing)
+**Settings → Build, Execution, Deployment → Compiler → Annotation Processors**
+- ✅ Enable: "Enable annotation processing"
+- 🔧 Processor path: "Obtain processors from project classpath"
+
+**Settings → Build, Execution, Deployment → Build Tools → Maven → Runner**
+- ✅ Enable: "Delegate IDE build/run actions to Maven" (previene duplicación en annotation processing)
 
 ## Compilación
 ```bash
