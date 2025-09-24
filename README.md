@@ -1,16 +1,17 @@
 # BCNC-PRICES
 
 ## 📋 Tabla de Contenidos
-- [Estructura General](#estructura-general)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Configuración del Entorno](#configuración-del-entorno)
-- [Arquitectura Hexagonal](#arquitectura-hexagonal)
-- [Ejecución del Proyecto](#ejecución-del-proyecto)
-- [Pruebas](#pruebas)
-- [Índices](#índices)
-- [Gestión del Proyecto](#gestión-del-proyecto)
-- [Colección Postman](#colección-postman)
-- [Swagger / API Contract](#swagger--api-contract)
+- [Estructura General](#-estructura-general)
+- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
+- [Configuración del Entorno](#-configuración-del-entorno)
+- [Arquitectura Hexagonal](#-arquitectura-hexagonal)
+- [Compilación](#compilación)
+- [Ejecución](#ejecución)
+- [Pruebas](#-pruebas)
+- [Índices](#-índices)
+- [Gestión del Proyecto](#-gestión-del-proyecto)
+- [Ejemplos de llamadas](#-ejemplo-de-llamadas)
+- [Licencia](#licencia)
 
 ## 🏗️ Estructura General
 Este proyecto sigue los principios de **Arquitectura Hexagonal** (Ports and Adapters) con múltiples módulos Maven:
@@ -95,14 +96,19 @@ export SPRING_PROFILES_ACTIVE=local
 - El dominio no conoce detalles de infraestructura.
 - Facilita testing y mantenibilidad.
 
-## 🚀 Ejecución del Proyecto
-
-### Compilación
+## Compilación
 ```bash
 mvn clean install
+```
+
+## Ejecución
+```bash
 mvn spring-boot:run -pl boot
 ```
+
 ## 🧪 Pruebas
+### Testeo local
+Al levantar el proyecto con el perfil 'local', se ejecuta el [DML de desarrollo](driven/h2-repository/sql/migration/develop/R__insert-test-prices-data.sql). Con el que poder jugar y hacer pruebas libremente
 
 ### Pruebas Unitarias
 - Cubren todos los servicios, mappers y componentes del dominio.
@@ -132,11 +138,60 @@ ON TBL_PRICES(BRAND_ID, PRODUCT_ID, START_DATE, END_DATE, PRIORITY DESC);
 - **Convenciones de Código:** Estándares consistentes de codificación, documentación y formateo.
 - ![img.png](img.png)
 
-## 📊 Colección Postman
+## 📊 Ejemplo de llamadas
+### Colección Postman - [Fichero Postman](bcnc-prices.postman_collection.json)
 - Incluye todos los endpoints de la API para pruebas rápidas.
 - Compatible con el contrato Swagger definido en el módulo `api-rest`.
 
-## 📜 Swagger / API Contract
+#### Ejemplo llamada:
+```curl
+curl --location --globoff '{{bcnc-url}}/prices?date=2020-06-14T10%3A00%3A00&productId=35455&brandId=1'
+```
+#### Ejemplo respuesta:
+```json
+{
+    "items": [
+        {
+            "productId": 35455,
+            "brandId": 1,
+            "priceListId": 1,
+            "startDate": "2020-06-14T00:00:00",
+            "endDate": "2020-12-31T23:59:57",
+            "price": 35.5,
+            "currency": "EUR"
+        },
+        {
+            "productId": 35455,
+            "brandId": 1,
+            "priceListId": 1,
+            "startDate": "2020-06-14T00:00:01",
+            "endDate": "2020-12-31T23:59:58",
+            "price": 35.5,
+            "currency": "YEN"
+        },
+        {
+            "productId": 35455,
+            "brandId": 1,
+            "priceListId": 1,
+            "startDate": "2020-06-14T00:00:00",
+            "endDate": "2020-12-31T23:59:59",
+            "price": 42.0,
+            "currency": "USD"
+        }
+    ],
+    "pagination": {
+        "currentPageSize": 3,
+        "currentPage": 1,
+        "hasNextPage": false,
+        "totalItems": 3,
+        "totalPages": 1
+    }
+}
+```
+
+### 📜 Swagger / API Contract - [Fichero Contrato](driving/api-rest/src/main/resources/prices-service-openapi.yml)
 - Documentación completa de todos los endpoints REST.
 - Permite probar, validar y explorar la API de manera interactiva.
 
+## Licencia
+[MIT](LICENSE) © Genís
